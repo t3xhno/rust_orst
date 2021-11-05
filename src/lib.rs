@@ -1,5 +1,5 @@
 pub trait Sorter {
-    fn sort<T>(slice: &mut [T]) where T: Ord {}
+    fn sort<T>(_slice: &mut [T]) where T: Ord {}
 }
 
 pub fn sort<T, S>(slice: &mut [T])
