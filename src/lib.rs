@@ -4,6 +4,7 @@ pub trait Sorter {
 
 mod bubblesort;
 mod insertionsort;
+mod selectionsort;
 
 #[cfg(test)]
 mod tests {
@@ -11,7 +12,9 @@ mod tests {
     struct StdSorter;
     impl Sorter for StdSorter {
         fn sort<T>(&self, slice: &mut [T])
-        where T: Ord {
+        where
+            T: Ord,
+        {
             slice.sort();
         }
     }

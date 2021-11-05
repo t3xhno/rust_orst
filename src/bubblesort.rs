@@ -4,7 +4,9 @@ pub struct BubbleSort;
 
 impl Sorter for BubbleSort {
     fn sort<T>(&self, slice: &mut [T])
-    where T: Ord {
+    where
+        T: Ord,
+    {
         let mut swapped = true;
         while swapped {
             swapped = false;
