@@ -8,12 +8,21 @@ impl Sorter for SelectionSort {
         T: Ord,
     {
         for unsorted in 0..slice.len() {
-            let mut smallest_in_rest = unsorted;
-            for i in (unsorted + 1)..slice.len() {
-                if slice[i] < slice[smallest_in_rest] {
-                    smallest_in_rest = i;
-                }
-            }
+            // FUNCTIONAL [ITERATOR] VERSION ***************
+            let (smallest_in_rest, _) = slice[unsorted..]
+                .iter()
+                .enumerate()
+                .min_by_key(|&(_, v)| v)
+                .expect("Slice is non-empty.");
+            let smallest_in_rest = unsorted + smallest_in_rest;
+
+            // EXPLICIT VERSION!!! ***************
+            // let mut smallest_in_rest = unsorted;
+            // for i in (unsorted + 1)..slice.len() {
+            //     if slice[i] < slice[smallest_in_rest] {
+            //         smallest_in_rest = i;
+            //     }
+            // }
             if unsorted != smallest_in_rest {
                 slice.swap(unsorted, smallest_in_rest);
             }
