@@ -3,7 +3,7 @@ use super::Sorter;
 pub struct BubbleSort;
 
 impl Sorter for BubbleSort {
-    fn sort<T>(slice: &mut [T])
+    fn sort<T>(&self, slice: &mut [T])
     where T: Ord {
         let mut swapped = true;
         while swapped {
@@ -21,6 +21,6 @@ impl Sorter for BubbleSort {
 #[test]
 fn bubble_works() {
     let mut things = vec![4, 2, 3, 1];
-    super::sort::<_, BubbleSort>(&mut things);
+    BubbleSort.sort(&mut things);
     assert_eq!(things, &[1, 2, 3, 4]);
 }
